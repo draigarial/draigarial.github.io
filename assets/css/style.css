@@ -1,5 +1,5 @@
 body {
-  background-color: #ffa5c4;
+   background: linear-gradient(to bottom right, #ffa5c4, #22d3ee);
   color: #87d6f4;
   text-shadow: 1px 1px 1px black;
 }

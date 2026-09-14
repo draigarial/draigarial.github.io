@@ -10,28 +10,53 @@
 </head>
 <body>
 <div class="d-flex justify-content-center align-items-center min-vh-100">
-	<header class="position-absolute top-0 start-0 w-100 d-flex align-items-start" >
+	<header class="position-absolute top-0 end-0 w-100 d-flex align-items-start" >
 		<marquee class="marqueeText">Hello = 3 ♡</marquee>
 	</header>
-	<nav class="d-flex justify-content-center align-items-start vh-100 pt-5">
-		<a href="#" class="navLink" onclick="say_hi()"">FAQ</a>&emsp;<a href="#" class="navLink" onclick="say_hi()">Contact me</a>
+		<nav class="d-flex justify-content-center align-items-start vh-100 pt-5 " >
+		<ul>
+		<li><a href="#" class="navLink" onclick="say_hi()"">FAQ</a></li><li><a href="#" class="navLink" onclick="say_hi()">Contact me</a></li>
+		</ul>
 	</nav>
-	<aside class="position-fixed top-0 start-0 vh-100 p-4 custom-floating-panel" style="width: 14rem;">
+	<aside class="position-fixed top-0 end-0 vh-100 p-4 custom-floating-panel" style="width: 14rem;">
     <div id="sideBar" class="card h-100 shadow mycard-theme">
       <header class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
         <span>About me</span>
       </header>
       <section class="card-body overflow-auto">
         <h6>⋆｡‧˚ʚ🍓ɞ˚‧｡⋆ Oli's shop ˚˖𓍢🌷✧˚.🎀⋆</h6>
-        <p class="small text-muted">This is just a bootstrap test, mimicking a shop front, and using semantic HTML5 tags.  Welcome! ^,=,^</p>
+        <p class="small text-muted">This is just a bootstrap test, doing couple of silly stuff using semantic HTML5 tags.  Welcome! ^,=,^</p>
         <button class="btn btn-sm btn-outline-primary w-100 mb-2" onclick="say_hi()">(づ｡◕‿‿◕｡)づ Say hi</button>
         <button class="btn btn-sm btn-outline-secondary w-100">Coming soon!</button>
+		<img src="assets/imgs/retro.png" class="card-img-top" alt="old font">
+			<span><a href="assets/files/retro.ttf">Download retro font here for free!!!!</a></span>
+			
       </section>
     </div>
   </aside>
 
+  	<aside class="position-fixed top-0 start-0 vh-100 p-4 custom-floating-panel" style="width: 14rem;">
+    <div id="sideBar" class="card h-100 shadow mycard-theme">
+      <header class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+        <span>Highscores!</span>
+      </header>
+      <section class="card-body overflow-auto">
+        <button class="btn btn-sm btn-outline-primary w-100 mb-2" onclick="say_hi()">(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ Say meow</button>
+        <button class="btn btn-sm btn-outline-secondary w-100">Coming soon!</button>
+        <section id="hs-list">
+      		<span>Highscores!</span>
+			<ul id="myList">
+
+			</ul>
+      	</section>
+      </section>
+      
+    </div>
+  </aside>
+
+
 	<main id="mainSection" class="d-flex justify-content-center align-items-center card mycard-theme" style="width: 22rem;">
-	<p id="mainText">♡ Online shop ♡</p>
+	<p id="mainText">♡ Online shop ♡ <img src="assets/imgs/kittysma.gif" style="width:64px;" class="card-img-top" alt="hello kitty"></p>
 		<article class="d-flex justify-content-center align-items-center card mycard-theme" style="width: 18rem;">
 			<img src="assets/imgs/gamingpc.jpg" class="card-img-top" alt="old pc">
 			<div class="card-body">
@@ -49,6 +74,9 @@
 						<a id="submitPurchase" href="#" onclick="processSale()" class="disabled btn btn-primary">Submit</a>
 					</div>
 				</div>
+				<span><a href="assets/files/apu_adpt.zip">Download fancy thing here for free!!!!</a></span>
+			<img src="assets/imgs/snes_apu_protoboard_adapter.jpg" class="card-img-top" alt="old adapter">
+	
 			</div>
 		</article>
 	</main>

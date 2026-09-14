@@ -36,6 +36,14 @@ function processSale(){ // Substracts stock amount by #itemQuantity purchased, a
   }
 }
 
+const ul = document.getElementById("myList");
 function say_hi(){
   alert("Hiiiiii! ≧◡≦");
+  const li = document.createElement("li");
+  li.textContent = "MEOW";
+  ul.appendChild(li);
+  if (stock == 0) {
+    li.textContent = "MEOOOOOOOOOOOOOOOOW";
+  ul.appendChild(li);
+  }
 }
