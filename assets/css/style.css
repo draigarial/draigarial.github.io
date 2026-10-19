@@ -4,21 +4,25 @@ body {
     background: linear-gradient(135deg, #ffa5c4, #87d6f4);
 }
 
+/* Search input */
 #pokemon_search {
     margin: 0 auto;
 }
 
-.pokemon_display {
+/* The div with all the pokemon listed inside*/
+#pokemon_display {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
 
+/* Fallback if bootstrap is offline */
 .pokemon_card {
     background: black;
     color: white;
 }
 
+/* All the .card* ones below are card styling for each Pokemon */
 .card-sleek {
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: #fff;
@@ -27,9 +31,11 @@ body {
     transition: transform 0.3s ease-in-out;
 }
 
+/* Card animation when hovering pointer over it */
 .card-sleek:hover {
     transform: translateY(-5px);
 }
+
 
 .card-sleek .card-body {
     padding: 2rem;

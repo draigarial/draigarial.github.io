@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Oliver's Pokepals!</title>
+	<!-- Adds Bootstrap CSS -->
 	<link
 		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
 		rel="stylesheet"
@@ -16,17 +17,20 @@
 
 <body>
 	<header class="my-4">
+		<!-- Input search box, to filter Pokemon by either nickname or species name -->
         <input type="search" id="pokemon_search" class="form-control" placeholder="Search by nickname or species name">
 		<h1>My Pokemon SoulSilver pals!</h1>
 	</header>
 	
-	<article class="pokemon_display"></article>
+	<!-- Every Pokemon will be listed inside this article tag -->
+	<article id="pokemon_display"></article>
+	<!-- This script will get the Pokemon data from my savegame in my servers' db, and add the content as cards in the article with id #pokemon_display -->
 	<script src="assets/js/script.js"></script>
+	<!-- Adds Bootstrap JS -->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
 		crossorigin="anonymous"
 	></script>
 </body>
-
 </html>

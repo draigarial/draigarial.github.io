@@ -1,4 +1,4 @@
-const pokemonSection = document.querySelector(".pokemon_display"); // Div with the Pokemon list
+const pokemonSection = document.querySelector("#pokemon_display"); // Div with the Pokemon list
 const searchInput = document.querySelector("#pokemon_search"); // Search input tag
 
 const apiURL = "https://draigarial.eu.org/pkmnsave.php";
