@@ -1,49 +1,65 @@
-var price = Number(document.getElementById("itemPrice").textContent);
-var stock = parseInt(document.getElementById("itemStock").textContent);
-document.querySelector("#itemQuantity").max = stock // Sets the input box "max" attribute
+const pokemonSection = document.querySelector(".pokemon_display"); // Div with the Pokemon list
+const searchInput = document.querySelector("#pokemon_search"); // Search input tag
 
-function updatePrice(){ // Updates the price, multiplying it by the #itemQuantity input box content
-  var inputBox = parseInt(document.querySelector("#itemQuantity").value);
-  document.getElementById("totalPrice").textContent = price * inputBox;
+const apiURL = "https://draigarial.eu.org/pkmnsave.php";
+
+let pokemonlist = []; // To fetch once, filter many times
+
+// Fetch API data once, stores on pokemonlist
+async function getPokemon() {
+    const res = await fetch(apiURL); 
+    const pokemonlist = await res.json(); 
+    return pokemonlist;
 }
 
-function changeQuantity(amount){ // Changes #itemQuantity by the argument value, can't go below 0 or over stock amount
-  var inputBox = parseInt(document.querySelector("#itemQuantity").value);
-  var result = inputBox += amount;
-  if (result <= 0) {
-    result = 0;
-    document.getElementById("submitPurchase").classList.add("disabled");
-  } else if (result > stock) {
-    result = stock;
-  }
-  if (result > 0) {
-    document.getElementById("submitPurchase").classList.remove("disabled");
-  }
-  
-  document.querySelector("#itemQuantity").value = result;
-  updatePrice();
+// Compares pokemonlist data to search input, populates only matching instances
+function renderPokemon(searchTerm = "") {
+    let filteredPokemon = pokemonlist.filter((pokemon) => {
+        let nickname = (pokemon.pkss_nickname || "").toLowerCase();
+        let species = (pokemon.pk_species_name || "").toLowerCase();
+        let search = searchTerm.toLowerCase().trim();
+        return nickname.includes(search) || species.includes(search);
+    });
+
+    let template = "";
+    filteredPokemon.forEach((pokemon) => {
+        let dexnumber = `${pokemon.pkss_species_id}`;
+        template += `
+            <div class="pokemon_card card card-sleek">
+                <div class="card-body">
+                    <img src="assets/images/pokemon/${dexnumber.toString().padStart(3,'0')}.png"/>
+                    <h3 class="card-title">${pokemon.pkss_nickname}</h3>
+                    <p class="card-text">${pokemon.pk_species_name}</p>
+                    <p class="card-text">HP EV: ${pokemon.pkss_hp_ev}</p>
+                    <p class="card-text">Attack EV: ${pokemon.pkss_attack_ev}</p>
+                    <p class="card-text">Defense EV: ${pokemon.pkss_defense_ev}</p>
+                    <p class="card-text">Speed EV: ${pokemon.pkss_speed_ev}</p>
+                    <p class="card-text">SP Attack EV: ${pokemon.pkss_spattack_ev}</p>
+                    <p class="card-text">SP Defense EV: ${pokemon.pkss_spdefense_ev}</p>
+
+                    <p class="card-text">HP IV: ${pokemon.pkss_hp_iv}</p>
+                    <p class="card-text">Attack IV: ${pokemon.pkss_attack_iv}</p>
+                    <p class="card-text">Defense IV: ${pokemon.pkss_defense_iv}</p>
+                    <p class="card-text">Speed IV: ${pokemon.pkss_speed_iv}</p>
+                    <p class="card-text">SP Attack IV: ${pokemon.pkss_spattack_iv}</p>
+                    <p class="card-text">SP Defense IV: ${pokemon.pkss_spdefense_iv}</p>
+                </div>
+            </div>
+        `;
+    });
+
+    pokemonSection.innerHTML = template;
 }
 
-function processSale(){ // Substracts stock amount by #itemQuantity purchased, and set the #itemQuantity to 0 and its max to the current stock, if stock is 0, delete the buying options
-  alert("You've bought " + String(document.querySelector("#itemQuantity").value) + " " + String(document.getElementById("itemName").textContent) + " for " + String(document.getElementById("totalPrice").textContent) + "!");
-  document.getElementById("itemStock").textContent = stock - parseInt(document.querySelector("#itemQuantity").value);
-  stock = parseInt(document.getElementById("itemStock").textContent);
-  document.querySelector("#itemQuantity").max = stock
-  changeQuantity(-parseInt(document.querySelector("#itemQuantity").value));
-  if (stock == 0) {
-    document.getElementById("stockAvailable").replaceChildren();
-    document.getElementById("itemStock").textContent = "Out of stock";
-  }
+// Fetches once, renders the first time
+async function initPokemon() {
+  pokemonlist = await getPokemon();
+  renderPokemon();
 }
 
-const ul = document.getElementById("myList");
-function say_hi(){
-  alert("Hiiiiii! ≧◡≦");
-  const li = document.createElement("li");
-  li.textContent = "MEOW";
-  ul.appendChild(li);
-  if (stock == 0) {
-    li.textContent = "MEOOOOOOOOOOOOOOOOW";
-  ul.appendChild(li);
-  }
-}
+// Updates Pokemon list after search input change
+searchInput.addEventListener("input", () => {
+    renderPokemon(searchInput.value);
+});
+
+initPokemon();
